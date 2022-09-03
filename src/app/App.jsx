@@ -1,11 +1,14 @@
-import ReviewHistory from "../components/ReviewHistory";
 import GlobalStyles from "./GlobalStyles";
+import Layout from "../components/Layout";
+import ReviewHistory from "../components/ReviewHistory";
 
 const App = () => {
   return (
     <>
       <GlobalStyles />
-      <ReviewHistory />
+      <Layout>
+        <ReviewHistory />
+      </Layout>
     </>
   );
 };
