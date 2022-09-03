@@ -3,12 +3,14 @@ import React from "react";
 import styled from "styled-components";
 
 const ReviewCade = ({ title, comment, score, handleDelete }) => {
+  let yellowScoreStar = new Array(score).fill("⭐️");
+
   return (
     <ReviewCadeContainer>
       <div className="review-card-detail">
         <div className="review-card-title">{title}</div>
         <div>{comment}</div>
-        <div>{score}</div>
+        <div>{yellowScoreStar}</div>
         <button onClick={handleDelete}>삭제</button>
       </div>
     </ReviewCadeContainer>
