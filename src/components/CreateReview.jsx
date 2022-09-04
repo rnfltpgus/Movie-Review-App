@@ -45,7 +45,8 @@ const CreateReview = ({ handleReviewCreate }) => {
 
   return (
     <CreateReviewContainer>
-      <div>영화 제목</div>
+      <SectionName>신규 리뷰 등록</SectionName>
+      <TitleName>영화 제목</TitleName>
       <input
         className="title-input"
         type="text"
@@ -53,14 +54,14 @@ const CreateReview = ({ handleReviewCreate }) => {
         value={title}
         onChange={(event) => handleTitle(event.target.value)}
       />
-      <div>한줄평</div>
-      <textarea
+      <TitleName>한줄평</TitleName>
+      <input
         className="comment"
         placeholder="내용을 입력해 주세요."
         value={comment}
         onChange={(event) => handleComment(event.target.value)}
-      ></textarea>
-      <div>별점</div>
+      ></input>
+      <TitleName>별점</TitleName>
       <label>
         <select
           type="number"
@@ -97,14 +98,45 @@ const CreateReviewContainer = styled.section`
   padding: 1rem;
   display: flex;
   flex-direction: column;
-  background-color: #fff;
-  border: 0.1rem solid #ddd;
-  border-radius: 10px;
-  color: #194e84;
+  background-color: #f5f5f5;
   gap: 1.5vh;
-  margin-bottom: 4vh;
+
+  input {
+    padding: 0.5rem;
+    border: 0.1rem solid #ddd;
+    border-radius: 5px;
+    height: 40px;
+  }
+
+  select {
+    padding: 0.5rem;
+    width: 100%;
+    height: 40px;
+    font-weight: bold;
+  }
 
   span {
+    font-size: 10px;
     color: #f32929;
   }
+
+  button {
+    background-color: #194e84;
+    border-radius: 5px;
+    height: 40px;
+    color: #f5f5f5;
+    font-size: 15px;
+  }
+`;
+
+const SectionName = styled.div`
+  font-weight: bold;
+  font-size: 18px;
+  color: #194e84;
+`;
+
+const TitleName = styled.div`
+  font-weight: bold;
+  font-size: 14px;
+  color: #194e84;
 `;

@@ -9,7 +9,7 @@ const ReviewCade = ({ title, comment, score, handleDelete }) => {
     <ReviewCadeContainer>
       <div className="review-card-detail">
         <div className="review-card-title">{title}</div>
-        <div>{comment}</div>
+        <div className="review-card-comment">{comment}</div>
         <div>{yellowScoreStar}</div>
         <button onClick={handleDelete}>삭제</button>
       </div>
@@ -20,7 +20,6 @@ const ReviewCade = ({ title, comment, score, handleDelete }) => {
 export default ReviewCade;
 
 const ReviewCadeContainer = styled.div`
-  width: 35vw;
   padding: 1rem;
   margin-bottom: 1rem;
   background-color: #fff;
@@ -36,5 +35,8 @@ const ReviewCadeContainer = styled.div`
 
   .review-card-title {
     font-weight: bold;
+  }
+  .review-card-comment {
+    font-size: 14px;
   }
 `;
