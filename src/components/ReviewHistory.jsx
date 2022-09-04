@@ -4,6 +4,7 @@ import CreateReview from "./CreateReview";
 import ReviewCade from "./ReviewCade";
 
 import styled from "styled-components";
+import SearchReview from "./SearchReview";
 
 const ReviewHistory = () => {
   let [reviews, setReviews] = useState(
@@ -41,10 +42,6 @@ const ReviewHistory = () => {
     setReviews([review, ...reviews]);
   };
 
-  const onChange = (event) => {
-    setSearch(event.target.value);
-  };
-
   const handleSearch = (event) => {
     event.preventDefault();
     setIsKeyword(true);
@@ -75,17 +72,11 @@ const ReviewHistory = () => {
       <div className="review-history-title">신규 리뷰 등록</div>
       <CreateReview handleReviewCreate={addReview} />
       <div className="review-history-title">리뷰 검색</div>
-      <form className="search-input">
-        <input
-          placeholder="영화 제목을 입력해 주세요."
-          type="text"
-          value={search}
-          onChange={onChange}
-        />
-        <button hidden onClick={handleSearch}>
-          검색
-        </button>
-      </form>
+      <SearchReview
+        handleSearch={handleSearch}
+        search={search}
+        setSearch={setSearch}
+      />
       <div className="review-history-title">리뷰 내역</div>
       <ul className="review-list">
         {reviews &&
