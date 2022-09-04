@@ -48,7 +48,7 @@ const HistoryReview = ({ reviews, setReviews }) => {
 export default HistoryReview;
 
 const HistoryReviewContainer = styled.div`
-  width: 35vw;
+  width: 30vw;
   padding: 1rem;
   display: flex;
   flex-direction: column;

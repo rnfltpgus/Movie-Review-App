@@ -94,7 +94,7 @@ const CreateReview = ({ handleReviewCreate }) => {
 export default CreateReview;
 
 const CreateReviewContainer = styled.section`
-  width: 35vw;
+  width: 30vw;
   padding: 1rem;
   display: flex;
   flex-direction: column;

@@ -26,7 +26,7 @@ const SearchReview = ({ search, setSearch, handleSearch }) => {
 export default SearchReview;
 
 const SearchContainer = styled.form`
-  width: 35vw;
+  width: 30vw;
   padding: 1rem;
   display: flex;
   flex-direction: column;

@@ -42,8 +42,8 @@ const ReviewHistory = () => {
   };
 
   const handleUserAction = () => {
-    reviews = reviews.filter((reviews) => {
-      const { title, comment } = reviews;
+    reviews = reviews.filter((review) => {
+      const { title, comment } = review;
       const keyWord = search.toLowerCase();
 
       return (
