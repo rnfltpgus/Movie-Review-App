@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 
-import CreateReview from "./CreateReview";
-import ReviewCade from "./ReviewCade";
+import CreateReview from "../components/CreateReview";
+import ReviewCade from "../components/ReviewCade";
 
 import styled from "styled-components";
-import SearchReview from "./SearchReview";
+import SearchReview from "../components/SearchReview";
 
 const ReviewHistory = () => {
   let [reviews, setReviews] = useState(
@@ -69,15 +69,15 @@ const ReviewHistory = () => {
 
   return (
     <ReviewHistoryContainer>
-      <div className="review-history-title">신규 리뷰 등록</div>
+      <SectionName>신규 리뷰 등록</SectionName>
       <CreateReview handleReviewCreate={addReview} />
-      <div className="review-history-title">리뷰 검색</div>
+      <SectionName>리뷰 검색</SectionName>
       <SearchReview
-        handleSearch={handleSearch}
         search={search}
         setSearch={setSearch}
+        handleSearch={handleSearch}
       />
-      <div className="review-history-title">리뷰 내역</div>
+      <SectionName>리뷰 내역</SectionName>
       <ul className="review-list">
         {reviews &&
           reviews
@@ -109,11 +109,11 @@ const ReviewHistory = () => {
 
 export default ReviewHistory;
 
-const ReviewHistoryContainer = styled.section`
-  .review-history-title {
-    font-weight: bold;
-    font-size: 18px;
-    color: #194e84;
-    margin-bottom: 20px;
-  }
+const ReviewHistoryContainer = styled.section``;
+
+const SectionName = styled.div`
+  font-weight: bold;
+  font-size: 18px;
+  color: #194e84;
+  margin-bottom: 20px;
 `;

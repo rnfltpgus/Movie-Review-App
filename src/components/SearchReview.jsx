@@ -36,5 +36,5 @@ const CreateReviewContainer = styled.section`
   border-radius: 10px;
   color: #194e84;
   gap: 1.5vh;
-  margin-bottom: 5vh;
+  margin-bottom: 4vh;
 `;
