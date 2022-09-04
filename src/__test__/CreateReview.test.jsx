@@ -7,7 +7,7 @@ import CreateReview from "../components/CreateReview";
 
 describe("CreateReview Component", () => {
   beforeEach(() => {
-    render(<CreateReview handleReviewCreate={undefined} />);
+    render(<CreateReview />);
   });
 
   it("Render CreateReview Component Title Text", () => {
