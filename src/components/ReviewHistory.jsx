@@ -6,9 +6,11 @@ import ReviewCade from "./ReviewCade";
 import styled from "styled-components";
 
 const ReviewHistory = () => {
-  const [reviews, setReviews] = useState(
+  let [reviews, setReviews] = useState(
     JSON.parse(localStorage.getItem("review-data"))
   );
+  const [search, setSearch] = useState("");
+  const [isKeyword, setIsKeyword] = useState(false);
 
   useEffect(() => {
     async function getReviewData() {
@@ -39,6 +41,33 @@ const ReviewHistory = () => {
     setReviews([review, ...reviews]);
   };
 
+  const onChange = (event) => {
+    setSearch(event.target.value);
+  };
+
+  const handleSearch = (event) => {
+    event.preventDefault();
+    setIsKeyword(true);
+    setSearch(search);
+    setSearch("");
+  };
+
+  const handleUserAction = () => {
+    reviews = reviews.filter((reviews) => {
+      const { title, comment } = reviews;
+      const keyWord = search.toLowerCase();
+
+      return (
+        title.toLowerCase().includes(keyWord) ||
+        comment.toLowerCase().includes(keyWord)
+      );
+    });
+  };
+
+  if (isKeyword) {
+    handleUserAction();
+  }
+
   localStorage.setItem("review-data", JSON.stringify(reviews));
 
   return (
@@ -46,7 +75,17 @@ const ReviewHistory = () => {
       <div className="review-history-title">신규 리뷰 등록</div>
       <CreateReview handleReviewCreate={addReview} />
       <div className="review-history-title">리뷰 검색</div>
-
+      <form className="search-input">
+        <input
+          placeholder="영화 제목을 입력해 주세요."
+          type="text"
+          value={search}
+          onChange={onChange}
+        />
+        <button hidden onClick={handleSearch}>
+          검색
+        </button>
+      </form>
       <div className="review-history-title">리뷰 내역</div>
       <ul className="review-list">
         {reviews &&
