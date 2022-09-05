@@ -78,6 +78,11 @@ const CreateReview = ({ handleReviewCreate }) => {
         className="submit-button"
         disable={`${disable === true ? "disable" : ""}`}
         disabled={!title.trim().length || !comment.trim().length}
+        style={{
+          backgroundColor:
+            (!title.trim().length || !comment.trim().length) && "#d2d2d2",
+          color: (!title.trim().length || !comment.trim().length) && "#000000",
+        }}
         onClick={() => processForm()}
       >
         등록
