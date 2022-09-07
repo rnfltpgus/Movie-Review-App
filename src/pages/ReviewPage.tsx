@@ -1,17 +1,18 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 import CreateReview from "../components/CreateReview";
 import SearchReview from "../components/SearchReview";
 import HistoryReview from "../components/HistoryReview";
+import { ClickEvent } from "../types";
 
 import styled from "styled-components";
 
 const ReviewHistory = () => {
   let [reviews, setReviews] = useState(
-    JSON.parse(localStorage.getItem("review-data"))
+    JSON.parse(localStorage.getItem("review-data") as string)
   );
-  const [search, setSearch] = useState("");
-  const [isKeyword, setIsKeyword] = useState(false);
+  const [search, setSearch] = useState<string>("");
+  const [isKeyword, setIsKeyword] = useState<boolean>(false);
 
   useEffect(() => {
     async function getReviewData() {
@@ -30,11 +31,11 @@ const ReviewHistory = () => {
     getReviewData();
   }, [reviews, setReviews]);
 
-  const addReview = (review) => {
+  const addReview = (review: {}) => {
     setReviews([review, ...reviews]);
   };
 
-  const handleSearch = (event) => {
+  const handleSearch = (event: ClickEvent) => {
     event.preventDefault();
     setIsKeyword(true);
     setSearch(search);
@@ -42,7 +43,7 @@ const ReviewHistory = () => {
   };
 
   const handleUserAction = () => {
-    reviews = reviews.filter((review) => {
+    reviews = reviews.filter((review: { title: string; comment: string }) => {
       const { title, comment } = review;
       const keyWord = search.toLowerCase();
 

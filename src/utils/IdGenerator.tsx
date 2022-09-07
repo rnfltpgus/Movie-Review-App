@@ -1,4 +1,4 @@
-const IdGenerator = (length) => {
+const IdGenerator = (length: string | number) => {
   let result = "";
   let characters =
     "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";

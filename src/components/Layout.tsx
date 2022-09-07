@@ -1,6 +1,10 @@
 import styled from "styled-components";
 
-const Layout = ({ children }) => {
+type LayoutProps = {
+  children: any;
+};
+
+const Layout = ({ children }: LayoutProps) => {
   return <Wrapper>{children}</Wrapper>;
 };
 

@@ -1,8 +1,13 @@
-import React from "react";
-
 import styled from "styled-components";
 
-const ReviewCade = ({ title, comment, score, handleDelete }) => {
+type Reviews = {
+  title: string;
+  comment: string;
+  score: number;
+  handleDelete: () => void;
+};
+
+const ReviewCade = ({ title, comment, score, handleDelete }: Reviews) => {
   let yellowScoreStar = new Array(score).fill("⭐️");
 
   return (

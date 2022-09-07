@@ -4,27 +4,28 @@ import IdGenerator from "../utils/IdGenerator";
 
 import styled from "styled-components";
 
-const CreateReview = ({ handleReviewCreate }) => {
-  const [score, setScore] = useState(5);
-  const [title, setTitle] = useState("");
-  const [comment, setComment] = useState("");
-  const [disable, setDisable] = useState(false);
-  const [validateComment, setValidateComment] = useState(false);
+type CreateReviewProps = {
+  handleReviewCreate: (reviews: {}) => void;
+};
 
-  const scoreChanged = (value) => {
+const CreateReview = ({ handleReviewCreate }: CreateReviewProps) => {
+  const [score, setScore] = useState<number>(5);
+  const [title, setTitle] = useState<string>("");
+  const [comment, setComment] = useState<string>("");
+  const [validateComment, setValidateComment] = useState<boolean>(false);
+
+  const scoreChanged = (value: React.SetStateAction<number>) => {
     setScore(value);
   };
 
-  const handleTitle = (title) => {
+  const handleTitle = (title: React.SetStateAction<string>) => {
     setTitle(title);
   };
 
-  const handleComment = (comment) => {
+  const handleComment = (comment: React.SetStateAction<string>) => {
     if (comment.length < 5) {
-      setDisable(true);
       setValidateComment(true);
     } else {
-      setDisable(false);
       setValidateComment(false);
     }
 
@@ -64,7 +65,6 @@ const CreateReview = ({ handleReviewCreate }) => {
       <TitleName>별점</TitleName>
       <label>
         <select
-          type="number"
           onChange={({ target: { value } }) => scoreChanged(Number(value))}
         >
           <option value="5">5점</option>
@@ -76,13 +76,7 @@ const CreateReview = ({ handleReviewCreate }) => {
       </label>
       <button
         className="submit-button"
-        disable={`${disable === true ? "disable" : ""}`}
         disabled={!title.trim().length || !comment.trim().length}
-        style={{
-          backgroundColor:
-            (!title.trim().length || !comment.trim().length) && "#d2d2d2",
-          color: (!title.trim().length || !comment.trim().length) && "#000000",
-        }}
         onClick={() => processForm()}
       >
         등록
@@ -127,9 +121,10 @@ const CreateReviewContainer = styled.section`
 
   button {
     background-color: #194e84;
-    border-radius: 5px;
-    height: 40px;
     color: #f5f5f5;
+    border-radius: 5px;
+    border: 0.1rem solid #ddd;
+    height: 40px;
     font-size: 15px;
   }
 `;

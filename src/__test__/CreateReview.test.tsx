@@ -7,7 +7,9 @@ import CreateReview from "../components/CreateReview";
 
 describe("CreateReview Component", () => {
   beforeEach(() => {
-    render(<CreateReview />);
+    render(<CreateReview handleReviewCreate={function (reviews: {}): void {
+      throw new Error("Function not implemented.");
+    } } />);
   });
 
   it("Render CreateReview Component Title Text", () => {

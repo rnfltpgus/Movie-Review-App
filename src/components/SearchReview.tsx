@@ -1,9 +1,18 @@
-import React from "react";
-
 import styled from "styled-components";
+import { ClickEvent } from "../types";
 
-const SearchReview = ({ search, setSearch, handleSearch }) => {
-  const onChange = (event) => {
+type SearchReviewProps = {
+  search: string;
+  setSearch: (state: string) => void;
+  handleSearch: (event: ClickEvent) => void;
+};
+
+const SearchReview = ({
+  search,
+  setSearch,
+  handleSearch,
+}: SearchReviewProps) => {
+  const onChange = (event: { target: { value: string } }) => {
     setSearch(event.target.value);
   };
 

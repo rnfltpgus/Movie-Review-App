@@ -3,10 +3,21 @@ import React from "react";
 import { render, screen } from "@testing-library/react";
 
 import SearchReview from "../components/SearchReview";
+import { ClickEvent } from "../types";
 
 describe("SearchReview Component", () => {
   beforeEach(() => {
-    render(<SearchReview />);
+    render(
+      <SearchReview
+        search={""}
+        setSearch={function (state: string): void {
+          throw new Error("Function not implemented.");
+        }}
+        handleSearch={function (event: ClickEvent): void {
+          throw new Error("Function not implemented.");
+        }}
+      />
+    );
   });
 
   it("Render SearchReview Component Title Text", () => {
